@@ -19,10 +19,10 @@ module.exports = {
         _addFeatureLayerV2(mapEngine, 'twprgpy3', { type: 'fill', fillStyle: 'transparent', strokeStyle: '#b5b591', lineWidth: 1 });
         _addFeatureLayerV2(mapEngine, 'lakespy2', { type: 'fill', fillStyle: '#3175b9', strokeStyle: '#b5b591', lineWidth: 1 });
         _addFeatureLayerV2(mapEngine, 'dlgstln2', { type: 'line', strokeStyle: '#3175b9', lineWidth: 1 });
-        _addFeatureLayerV2(mapEngine, 'ctyrdln3', { type: 'line', strokeStyle: 'black', lineWidth: 1, maximumScale: 300000 }); // ctyrdln3_anno?
-        _addFeatureLayerV2(mapEngine, 'majrdln3', { type: 'line', strokeStyle: 'black', lineWidth: 1, maximumScale: 600000 }); // majrdln3_anno?
-        _addFeatureLayerV2(mapEngine, 'airports', { type: 'point', fillStyle: '#80ffa4', strokeStyle: 'black', lineWidth: 1, symbol: 'circle', radius: 7 });
-        _addFeatureLayerV2(mapEngine, 'majrdln3', { type: 'values', field: 'ROAD_CLASS', items: [
+        _addFeatureLayerV2(mapEngine, 'ctyrdln3', { type: 'line', strokeStyle: 'black', lineWidth: 1, maximumScale: 300000 });
+        _addFeatureLayerV2(mapEngine, 'majrdln3', { type: 'line', strokeStyle: 'black', lineWidth: 1, maximumScale: 600000 });
+        _addFeatureLayerV2(mapEngine, 'airports', { type: 'icon', image: 'symbols/airport.png', maximumScale: 600000 });
+        _addFeatureLayerV2(mapEngine, 'majrdln3', { type: 'values', field: 'ROAD_CLASS', maximumScale: 600000, items: [
             {
                 value: '3',
                 style: {
@@ -110,6 +110,9 @@ function _parseStyleV2(styleOptions) {
 
 function _parseValueStyleV2(styleOptions) {
     let style = new ValueStyle(`${styleOptions.field}`);
+
+    _setGeneralOptions(style, styleOptions);
+
     styleOptions.items.forEach(i => {
         let value = i.value;
         let subStyle = _parseStyleV2(i.style);
@@ -121,7 +124,8 @@ function _parseValueStyleV2(styleOptions) {
 
 function _parseSymbolTextStyleV2(styleOptions) {
     let style = new SymbolTextStyle(`[${styleOptions.field}]`, styleOptions.fillStyle);
-    style.font = styleOptions.font;
+    _setGeneralOptions(style, styleOptions);
+
     style.symbol = _parseStyleV2(styleOptions.symbol);
     return style;
 }
@@ -129,5 +133,13 @@ function _parseSymbolTextStyleV2(styleOptions) {
 function _parseIconStyleV2(styleOptions) {
     let imageFilePath = path.resolve(rootPath, styleOptions.image);
     let style = new IconStyle(new Image(imageFilePath));
+    _setGeneralOptions(style, styleOptions);
     return style;
+}
+
+function _setGeneralOptions(style, options) {
+    let keys = ['maximumScale', 'minimumScale', 'font'];
+    keys.forEach(k => { if (options[k] !== undefined) {
+        style[k] = options[k]
+    }});
 }
