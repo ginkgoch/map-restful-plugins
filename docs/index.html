@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Service test page</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+	<style type="text/css">
+		#mapid { height: 480px; width: 640px; }
+	</style>
+</head>
+<body>
+	<div id="mapid"></div>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+	<script>
+		let map = L.map("mapid").setView([47.48194469821279, -93.68041992187501], 9);
+		let host = 'ec2-3-135-237-227.us-east-2.compute.amazonaws.com';
+		
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    	L.tileLayer('http://' + host + ':3000/maps/workshop/tiles/xyz/{z}/{x}/{y}', { attribution: '&copy; <a href="https://www.ginkgoch.com">Ginkgoch</a> contributors' }).addTo(map);
+    	
+        map.on('click', evt => console.log(evt.latlng, evt.target.getZoom()));
+	</script>
+</body>
+</html>
