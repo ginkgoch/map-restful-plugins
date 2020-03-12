@@ -1,0 +1,14 @@
+{
+  "name": "map-restful-plugins",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ginkgoch/map-restful-plugins.git",
+  "author": "Ginkgoch <ginkgoch@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "serve": "map-restful serve -e ."
+  },
+  "dependencies": {
+    "ginkgoch-map-restful-cli": "^1.0.12"
+  }
+}

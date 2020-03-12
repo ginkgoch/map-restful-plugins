@@ -14,7 +14,7 @@ module.exports = {
         mapEngine.name = 'workshop';
         mapEngine.srs = new Srs(CRS_GOOGLE);
 
-        _addFeatureLayerV2(mapEngine, 'ctybdpy2', { type: 'fill', fillStyle: '#e4dfd1', strokeStyle: '#e1e1b9', lineWidth: 1 });
+        _addFeatureLayerV2(mapEngine, 'ctybdpy2', { type: 'fill', fillStyle: 'rgba(128,128,128,0.6)', strokeStyle: '#e1e1b9', lineWidth: 1 });
         _addFeatureLayerV2(mapEngine, 'mcd90py2', { type: 'fill', fillStyle: '#ffe15a', strokeStyle: '#ffe15a', lineWidth: 0 });
         _addFeatureLayerV2(mapEngine, 'twprgpy3', { type: 'fill', fillStyle: 'transparent', strokeStyle: '#b5b591', lineWidth: 1 });
         _addFeatureLayerV2(mapEngine, 'lakespy2', { type: 'fill', fillStyle: '#3175b9', strokeStyle: '#b5b591', lineWidth: 1 });
