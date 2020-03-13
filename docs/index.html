@@ -29,12 +29,12 @@
 	<script src="./index.js"></script>
 	<script>
 		let map = L.map("mapid").setView([47.48194469821279, -93.68041992187501], 9);
-		let host = 'ec2-3-135-237-227.us-east-2.compute.amazonaws.com';
-		// let request = axios.create({ baseURL: `https://${host}:3000/maps/workshop/groups/Default/layers` });
-		let baseURL = `http://${host}:3000/maps/workshop/groups/Default/layers`;
+		let host = 'localhost'; //'ec2-3-135-237-227.us-east-2.compute.amazonaws.com';
+		let protocol = 'http';
+		let baseURL = `${protocol}://${host}:3000/maps/workshop/groups/Default/layers`;
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    	L.tileLayer(`http://${host}:3000/maps/workshop/tiles/xyz/{z}/{x}/{y}`, { attribution: '&copy; <a href="https://www.ginkgoch.com">Ginkgoch</a> contributors' }).addTo(map);
+        // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    	L.tileLayer(`${protocol}://${host}:3000/maps/workshop/tiles/xyz/{z}/{x}/{y}`, { attribution: '&copy; <a href="https://www.ginkgoch.com">Ginkgoch</a> contributors' }).addTo(map);
 		
 		let style = {"color": "#ff7800", "weight": 5, "opacity": 0.65};
 		let pointToLayer = function(f, latlng) { return L.circleMarker(latlng, style); };
