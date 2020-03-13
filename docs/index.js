@@ -8,10 +8,16 @@ function identify(baseURL, geoJSON) {
         let zoom = evt.target.getZoom();
         for (let layer of layers) {
             let url = `${baseURL}/${layer}_3857/query?simplifyZoom=${zoom}&&outCRS=WGS84`;
-            let res = await axios.post(url, postData);
-            if (res.features.length > 0) {
-                geoJSON.addData(res).bindPopup(getPopupContent(res.features[0])).openPopup();
-                return;
+
+            try {
+                let res = await axios.post(url, postData);
+                if (res.features.length > 0) {
+                    geoJSON.addData(res).bindPopup(getPopupContent(res.features[0])).openPopup();
+                    return;
+                }
+            }
+            catch (ex) {
+                console.error(ex);
             }
         }
 
