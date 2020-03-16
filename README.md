@@ -1,8 +1,10 @@
 # Map Plugins
+This project is a show case and a plugin template for [Ginkgoch Map Library](https://ginkgoch.com/) and predefined mapping RESTful APIs on KOA framework [koa-map-router](https://github.com/ginkgoch/koa-map-router) project.
+
 Plugins are allowed to load customized map instances with you your plugin file. Follow the steps below to create your own plugins.
 This project includes a `workshop` map. Visit [this page](http://ec2-3-135-237-227.us-east-2.compute.amazonaws.com:3000/docs/) that hosts this map on AWS.
 
-> NOTE: This demo is hosted on `AWS Free Tier EC2` instance. Should be higher performance locally with multiple cores.
+> NOTE: [This demo](http://ec2-3-135-237-227.us-east-2.compute.amazonaws.com:3000/docs/) is hosted on `AWS EC2 Free Tier` instance. Should be higher performance locally with multiple cores.
 
 ## Launch workshop map server
 
