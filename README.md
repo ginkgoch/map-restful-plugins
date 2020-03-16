@@ -1,9 +1,8 @@
 # Map Plugins
 Plugins are allowed to load customized map instances with you your plugin file. Follow the steps below to create your own plugins.
-
 This project includes a `workshop` map. Visit [this page](http://ec2-3-135-237-227.us-east-2.compute.amazonaws.com:3000/docs/) that hosts this map on AWS.
 
-> NOTE: This demo is hosted on `AWS Free Tier EC2`. Should be higher performance locally with multiple cores.
+> NOTE: This demo is hosted on `AWS Free Tier EC2` instance. Should be higher performance locally with multiple cores.
 
 ## Launch workshop map server
 
@@ -14,7 +13,7 @@ npm i
 npm start serve
 ```
 
-Visit [http://localhost:3000/docs](http://localhost:3000/docs). Here is also a deployed demo for this plugin: http://ec2-3-135-237-227.us-east-2.compute.amazonaws.com:3000/docs/index.html. It is hosted on AWS free tier EC2 instance.
+Visit [http://localhost:3000/docs](http://localhost:3000/docs).
 
 ![index.png](docs/index.png)
 
